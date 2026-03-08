@@ -3,12 +3,20 @@ import path from "path";
 import crypto from "crypto";
 import { NextResponse } from "next/server";
 
+export type OAuthProvider = "google" | "discord" | "apple" | "facebook" | "phone";
+
 export type UserRecord = {
   id: string;
   email: string;
   name: string;
+  preferredName: string;
+  preferredLanguage: string;
+  heardFrom: string;
+  learnerType: string;
+  onboardingCompleted: boolean;
   passwordHash: string;
   passwordSalt: string;
+  oauthProviders: Partial<Record<OAuthProvider, string>>;
   verified: boolean;
   bio: string;
   createdAt: string;
@@ -36,7 +44,7 @@ export type VerifyPayload = BaseTokenPayload & {
 export type PublicUser = Omit<UserRecord, "passwordHash" | "passwordSalt">;
 
 const AUTH_STORE_PATH = path.join(process.cwd(), "data", "auth-users.json");
-const SESSION_COOKIE_NAME = "mnd_session";
+const SESSION_COOKIE_NAME = "lerna_session";
 const DEFAULT_SECRET = "dev-only-secret-change-me";
 const TOKEN_SECRET = process.env.AUTH_SECRET ?? DEFAULT_SECRET;
 
@@ -82,8 +90,26 @@ async function ensureStore(): Promise<void> {
 async function readStore(): Promise<AuthStore> {
   await ensureStore();
   const raw = await fs.readFile(AUTH_STORE_PATH, "utf8");
-  const parsed = JSON.parse(raw) as AuthStore;
-  return { users: parsed.users ?? [] };
+  const parsed = JSON.parse(raw) as { users?: Partial<UserRecord>[] };
+  const users = (parsed.users ?? []).map((user) => ({
+    id: user.id ?? crypto.randomUUID(),
+    email: (user.email ?? "").toLowerCase().trim(),
+    name: user.name ?? "User",
+    preferredName: user.preferredName ?? "",
+    preferredLanguage: user.preferredLanguage ?? "",
+    heardFrom: user.heardFrom ?? "",
+    learnerType: user.learnerType ?? "",
+    onboardingCompleted: user.onboardingCompleted ?? false,
+    passwordHash: user.passwordHash ?? "",
+    passwordSalt: user.passwordSalt ?? "",
+    oauthProviders: user.oauthProviders ?? {},
+    verified: user.verified ?? false,
+    bio: user.bio ?? "",
+    createdAt: user.createdAt ?? new Date().toISOString(),
+    updatedAt: user.updatedAt ?? new Date().toISOString(),
+  }));
+
+  return { users };
 }
 
 async function writeStore(store: AuthStore): Promise<void> {
@@ -96,6 +122,11 @@ export function toPublicUser(user: UserRecord): PublicUser {
     id: user.id,
     email: user.email,
     name: user.name,
+    preferredName: user.preferredName,
+    preferredLanguage: user.preferredLanguage,
+    heardFrom: user.heardFrom,
+    learnerType: user.learnerType,
+    onboardingCompleted: user.onboardingCompleted,
     verified: user.verified,
     bio: user.bio,
     createdAt: user.createdAt,
@@ -112,6 +143,16 @@ export async function findUserByEmail(email: string): Promise<UserRecord | null>
 export async function findUserById(id: string): Promise<UserRecord | null> {
   const store = await readStore();
   return store.users.find((user) => user.id === id) ?? null;
+}
+
+export async function findUserByProvider(
+  provider: OAuthProvider,
+  providerUserId: string,
+): Promise<UserRecord | null> {
+  const store = await readStore();
+  return (
+    store.users.find((user) => user.oauthProviders?.[provider] === providerUserId) ?? null
+  );
 }
 
 export async function createUser(input: {
@@ -132,8 +173,14 @@ export async function createUser(input: {
     id: crypto.randomUUID(),
     name: input.name.trim(),
     email: normalizedEmail,
+    preferredName: "",
+    preferredLanguage: "",
+    heardFrom: "",
+    learnerType: "",
+    onboardingCompleted: false,
     passwordHash: hashPassword(input.password, salt),
     passwordSalt: salt,
+    oauthProviders: {},
     verified: false,
     bio: "",
     createdAt: now,
@@ -146,6 +193,7 @@ export async function createUser(input: {
 }
 
 export function validatePassword(user: UserRecord, password: string): boolean {
+  if (!user.passwordHash || !user.passwordSalt) return false;
   const candidateHash = hashPassword(password, user.passwordSalt);
   const a = Buffer.from(user.passwordHash, "hex");
   const b = Buffer.from(candidateHash, "hex");
@@ -176,6 +224,77 @@ export async function updateUserProfile(
   if (typeof input.name === "string") user.name = input.name.trim();
   if (typeof input.bio === "string") user.bio = input.bio.trim();
   user.updatedAt = new Date().toISOString();
+
+  await writeStore(store);
+  return user;
+}
+
+export async function completeUserOnboarding(
+  userId: string,
+  input: {
+    preferredName: string;
+    preferredLanguage: string;
+    heardFrom: string;
+    learnerType: string;
+  },
+): Promise<UserRecord | null> {
+  const store = await readStore();
+  const user = store.users.find((entry) => entry.id === userId);
+  if (!user) return null;
+
+  user.preferredName = input.preferredName.trim();
+  user.preferredLanguage = input.preferredLanguage.trim();
+  user.heardFrom = input.heardFrom.trim();
+  user.learnerType = input.learnerType.trim();
+  user.onboardingCompleted = true;
+  user.updatedAt = new Date().toISOString();
+
+  await writeStore(store);
+  return user;
+}
+
+export async function upsertOAuthUser(input: {
+  provider: OAuthProvider;
+  providerUserId: string;
+  email: string;
+  name: string;
+  verified: boolean;
+}): Promise<UserRecord> {
+  const store = await readStore();
+  const normalizedEmail = input.email.toLowerCase().trim();
+  const now = new Date().toISOString();
+
+  let user =
+    store.users.find(
+      (entry) => entry.oauthProviders?.[input.provider] === input.providerUserId,
+    ) ?? store.users.find((entry) => entry.email === normalizedEmail);
+
+  if (!user) {
+    user = {
+      id: crypto.randomUUID(),
+      email: normalizedEmail,
+      name: input.name.trim() || "User",
+      preferredName: "",
+      preferredLanguage: "",
+      heardFrom: "",
+      learnerType: "",
+      onboardingCompleted: false,
+      passwordHash: "",
+      passwordSalt: "",
+      oauthProviders: { [input.provider]: input.providerUserId },
+      verified: input.verified,
+      bio: "",
+      createdAt: now,
+      updatedAt: now,
+    };
+    store.users.push(user);
+  } else {
+    user.email = normalizedEmail;
+    user.name = input.name.trim() || user.name;
+    user.oauthProviders[input.provider] = input.providerUserId;
+    user.verified = user.verified || input.verified;
+    user.updatedAt = now;
+  }
 
   await writeStore(store);
   return user;
