@@ -2,7 +2,7 @@
 
 type Theme = "light" | "dark";
 
-const STORAGE_KEY = "mnd-theme";
+const STORAGE_KEY = "lerna-theme";
 
 export default function ThemeToggle() {
   function getCurrentTheme(): Theme {
@@ -26,15 +26,15 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="rounded-full border px-3 py-1.5 text-xs font-medium"
+      className="rounded-full border px-3 py-1.5 text-xs font-medium transition"
       style={{
-        borderColor: "var(--app-border)",
+        borderColor: "color-mix(in srgb, var(--app-border) 75%, transparent)",
         color: "var(--app-fg)",
-        backgroundColor: "var(--app-card)",
+        backgroundColor: "color-mix(in srgb, var(--app-card) 85%, transparent)",
       }}
       aria-label="Toggle theme"
     >
-      Toggle theme
+      Theme
     </button>
   );
 }
