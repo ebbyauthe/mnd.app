@@ -74,70 +74,38 @@ export default function SettingsForm({ initialUser }: { initialUser: InitialUser
 
   return (
     <div className="space-y-6">
-      <form
-        onSubmit={onSave}
-        className="rounded-2xl border p-6"
-        style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
-      >
+      <form onSubmit={onSave} className="ui-panel rounded-3xl p-6 md:p-7">
         <h2 className="text-2xl font-semibold">Edit Profile</h2>
 
         <label className="mt-5 block text-sm font-medium">
           Display name
-          <input
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            className="mt-1 w-full rounded-xl border px-3 py-2"
-            style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-bg)" }}
-          />
+          <input value={name} onChange={(event) => setName(event.target.value)} className="ui-input mt-1" />
         </label>
 
         <label className="mt-4 block text-sm font-medium">
           Bio
-          <textarea
-            value={bio}
-            onChange={(event) => setBio(event.target.value)}
-            className="mt-1 h-32 w-full rounded-xl border px-3 py-2"
-            style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-bg)" }}
-          />
+          <textarea value={bio} onChange={(event) => setBio(event.target.value)} className="ui-input mt-1 h-32" />
         </label>
 
-        <button
-          type="submit"
-          disabled={isSaving}
-          className="mt-5 rounded-xl px-4 py-2 font-semibold text-white disabled:opacity-70"
-          style={{ backgroundColor: "var(--app-accent-strong)" }}
-        >
+        <button type="submit" disabled={isSaving} className="ui-btn-primary mt-5 px-4 py-2.5 disabled:opacity-70">
           {isSaving ? "Saving..." : "Save changes"}
         </button>
       </form>
 
-      <section
-        className="rounded-2xl border p-6"
-        style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
-      >
+      <section className="ui-panel rounded-3xl p-6 md:p-7">
         <h2 className="text-2xl font-semibold">Email Verification</h2>
         <p className="mt-2 text-sm" style={{ color: "var(--app-muted)" }}>
           Status: {initialUser.verified ? "Verified" : "Not verified"}
         </p>
 
         {!initialUser.verified ? (
-          <button
-            type="button"
-            onClick={resendVerification}
-            disabled={isResending}
-            className="mt-4 rounded-xl border px-4 py-2 text-sm disabled:opacity-70"
-            style={{ borderColor: "var(--app-border)" }}
-          >
+          <button type="button" onClick={resendVerification} disabled={isResending} className="ui-btn-secondary mt-4 px-4 py-2 text-sm disabled:opacity-70">
             {isResending ? "Generating link..." : "Resend verification link"}
           </button>
         ) : null}
 
         {verifyLink ? (
-          <a
-            href={verifyLink}
-            className="mt-4 block underline"
-            style={{ color: "var(--app-accent-strong)" }}
-          >
+          <a href={verifyLink} className="mt-4 block text-sm underline" style={{ color: "var(--app-accent-strong)" }}>
             Open verification link
           </a>
         ) : null}
