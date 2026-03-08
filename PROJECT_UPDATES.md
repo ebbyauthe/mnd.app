@@ -1,8 +1,8 @@
-# mnd.app Project Description and Updates
+# lerna.ai Project Description and Updates
 
 ## Project Description
 
-mnd.app is an AI-powered study platform that helps students understand their notes faster.
+lerna.ai is an AI-powered study platform that helps students understand their notes faster.
 
 Core goals:
 - Upload notes
