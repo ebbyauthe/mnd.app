@@ -260,15 +260,15 @@ export default function StudyroomHomePage() {
 
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
               <Link href="/upload" className="rounded-2xl border p-4 shadow-sm transition hover:shadow-md" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                <p className="text-base font-semibold">Upload</p>
+                <p className="text-base font-semibold"><span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>↑</span>Upload</p>
                 <p className="mt-1 text-sm" style={{ color: "var(--app-muted)" }}>Image, file, audio</p>
               </Link>
               <Link href="/upload" className="rounded-2xl border p-4 shadow-sm transition hover:shadow-md" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                <p className="text-base font-semibold">Paste</p>
+                <p className="text-base font-semibold"><span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>⛓</span>Paste</p>
                 <p className="mt-1 text-sm" style={{ color: "var(--app-muted)" }}>YouTube, website, text</p>
               </Link>
               <Link href="/upload" className="rounded-2xl border p-4 shadow-sm transition hover:shadow-md" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                <p className="text-base font-semibold">Record</p>
+                <p className="text-base font-semibold"><span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>●</span>Record</p>
                 <p className="mt-1 text-sm" style={{ color: "var(--app-muted)" }}>Record live lecture</p>
               </Link>
             </div>

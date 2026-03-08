@@ -232,9 +232,14 @@ export default async function Home() {
                   <div className="rounded-3xl p-6" style={{ backgroundColor: "var(--app-bg)", color: "var(--app-fg)" }}>
                     <p className="text-3xl font-bold">Hey David, what are you studying today?</p>
                     <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                      {["Upload", "Paste", "Record"].map((item) => (
-                        <div key={item} className="rounded-2xl border p-3 text-sm font-semibold" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                          {item}
+                      {[
+                        { label: "Upload", icon: "↑" },
+                        { label: "Paste", icon: "⛓" },
+                        { label: "Record", icon: "●" },
+                      ].map((item) => (
+                        <div key={item.label} className="rounded-2xl border p-3 text-sm font-semibold" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
+                          <span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>{item.icon}</span>
+                          {item.label}
                         </div>
                       ))}
                     </div>
