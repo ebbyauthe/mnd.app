@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --app-bg: #f8fbff;
+  --app-bg-soft: #dbeafe;
+  --app-card: #eff6ffea;
+  --app-fg: #0f172a;
+  --app-muted: #1d4ed8;
+  --app-border: #93c5fd;
+  --app-accent: #3b82f6;
+  --app-accent-strong: #1d4ed8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--app-bg);
+  --color-foreground: var(--app-fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="dark"] {
+  --app-bg: #020617;
+  --app-bg-soft: #0b1e46;
+  --app-card: #0b1a3be6;
+  --app-fg: #dbeafe;
+  --app-muted: #93c5fd;
+  --app-border: #1d4ed8;
+  --app-accent: #60a5fa;
+  --app-accent-strong: #2563eb;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% -10%, var(--app-bg-soft), transparent 45%),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--app-accent) 38%, transparent), transparent 45%),
+    var(--app-bg);
+  color: var(--app-fg);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
