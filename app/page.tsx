@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getCurrentUserFromCookieHeader } from "@/lib/auth";
@@ -146,8 +146,7 @@ export default async function Home() {
                 TRUSTED BY STUDENTS
               </p>
               <h1 className="mt-5 text-5xl font-extrabold leading-[1.02] md:text-7xl">
-                Learn Smarter…
-                <br />
+                Learn Smarter鈥?                <br />
                 <span className="bg-gradient-to-r from-violet-300 to-blue-300 bg-clip-text text-transparent">
                   Not Harder.
                 </span>
@@ -231,18 +230,29 @@ export default async function Home() {
                 <div className="rounded-3xl border p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
                   <div className="rounded-3xl p-6" style={{ backgroundColor: "var(--app-bg)", color: "var(--app-fg)" }}>
                     <p className="text-3xl font-bold">Hey David, what are you studying today?</p>
-                    <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                      {[
-                        { label: "Upload", icon: "↑" },
-                        { label: "Paste", icon: "⛓" },
-                        { label: "Record", icon: "●" },
-                      ].map((item) => (
-                        <div key={item.label} className="rounded-2xl border p-3 text-sm font-semibold" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                          <span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>{item.icon}</span>
-                          {item.label}
-                        </div>
-                      ))}
-                    </div>
+                    <ul className="mt-5 grid list-none gap-3 p-0 sm:grid-cols-3">
+                      <li
+                        className="rounded-2xl border p-3 text-sm font-semibold"
+                        style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+                      >
+                        <span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>^</span>
+                        Upload
+                      </li>
+                      <li
+                        className="rounded-2xl border p-3 text-sm font-semibold"
+                        style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+                      >
+                        <span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>#</span>
+                        Paste
+                      </li>
+                      <li
+                        className="rounded-2xl border p-3 text-sm font-semibold"
+                        style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+                      >
+                        <span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>*</span>
+                        Record
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <p className="mt-4 text-3xl font-semibold leading-snug">
@@ -349,9 +359,9 @@ export default async function Home() {
                   <div>
                     <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>TRADITIONAL METHODS</p>
                     <ul className="mt-3 space-y-2 text-lg">
-                      <li>✕ Reading notes without active recall</li>
-                      <li>✕ Reviewing the same pages repeatedly</li>
-                      <li>✕ No feedback on weak areas</li>
+                      <li>✓ Reading notes without active recall</li>
+                      <li>✓ Reviewing the same pages repeatedly</li>
+                      <li>✓ No feedback on weak areas</li>
                     </ul>
                   </div>
                   <div className="text-center text-4xl" style={{ color: "var(--app-accent-strong)" }}>↓</div>
@@ -374,9 +384,9 @@ export default async function Home() {
                   <div>
                     <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>TRADITIONAL METHODS</p>
                     <ul className="mt-3 space-y-2 text-lg">
-                      <li>✕ Long setup before real studying starts</li>
-                      <li>✕ Generic resources for every student</li>
-                      <li>✕ Hard to adjust as topics change</li>
+                      <li>✓ Long setup before real studying starts</li>
+                      <li>✓ Generic resources for every student</li>
+                      <li>✓ Hard to adjust as topics change</li>
                     </ul>
                   </div>
                   <div className="text-center text-4xl" style={{ color: "var(--app-accent-strong)" }}>↓</div>
@@ -399,9 +409,9 @@ export default async function Home() {
                   <div>
                     <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>TRADITIONAL METHODS</p>
                     <ul className="mt-3 space-y-2 text-lg">
-                      <li>✕ High tutoring and prep costs</li>
-                      <li>✕ Several apps to manage at once</li>
-                      <li>✕ Limited study help outside set hours</li>
+                      <li>✓ High tutoring and prep costs</li>
+                      <li>✓ Several apps to manage at once</li>
+                      <li>✓ Limited study help outside set hours</li>
                     </ul>
                   </div>
                   <div className="text-center text-4xl" style={{ color: "var(--app-accent-strong)" }}>↓</div>
@@ -464,7 +474,7 @@ export default async function Home() {
                         className="inline-flex h-10 w-10 items-center justify-center rounded-full border text-xl transition group-open:rotate-180"
                         style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}
                       >
-                        ˅
+                        v
                       </span>
                     </div>
                   </summary>
@@ -538,7 +548,7 @@ export default async function Home() {
             </div>
 
             <div className="mt-10 border-t pt-6 text-base" style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}>
-              <p>© 2026 Lerna AI. All rights reserved.</p>
+              <p>漏 2026 Lerna AI. All rights reserved.</p>
             </div>
           </div>
         </footer>
@@ -546,3 +556,6 @@ export default async function Home() {
     </main>
   );
 }
+
+
+
