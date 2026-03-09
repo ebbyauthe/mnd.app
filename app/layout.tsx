@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import AuthNav from "./components/auth-nav";
@@ -19,6 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "lerna.ai",
   description: "AI-powered study platform for notes, summaries, and quizzes.",
+  icons: {
+    icon: "/lerna-brand.svg",
+    shortcut: "/lerna-brand.svg",
+    apple: "/lerna-brand.svg",
+  },
 };
 
 export default function RootLayout({
@@ -55,20 +60,15 @@ export default function RootLayout({
             boxShadow: "none",
           }}
         >
-          <nav className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-4 px-6">
-            <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-wide">
-              <span
-                className="grid h-8 w-8 place-items-center rounded-lg text-xs font-bold"
-                style={{
-                  color: "white",
-                  background:
-                    "linear-gradient(135deg, var(--app-accent-strong), var(--app-accent))",
-                  boxShadow: "0 8px 18px color-mix(in srgb, var(--app-accent) 35%, transparent)",
-                }}
-              >
-                L
-              </span>
-              <span style={{ color: "var(--app-fg)" }}>lerna.ai</span>
+          <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-6">
+            <Link href="/" className="flex items-center gap-2 overflow-visible text-sm font-semibold tracking-wide">
+              <img
+                src="/lerna-brand.svg"
+                alt="lerna"
+                className="w-auto object-contain"
+                style={{ height: "3.4rem", transform: "scale(1.7)", transformOrigin: "left center" }}
+                loading="eager"
+              />
             </Link>
             <div className="flex items-center gap-2 text-sm" style={{ color: "var(--app-muted)" }}>
               <PrimaryNav />
@@ -82,3 +82,4 @@ export default function RootLayout({
     </html>
   );
 }
+

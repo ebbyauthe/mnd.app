@@ -51,9 +51,13 @@ export default function ReviewsCarousel({ testimonials }: { testimonials: Testim
                     className="review-avatar"
                     loading="lazy"
                   />
-                  <p className="text-2xl font-bold text-slate-100">{item.name}</p>
+                  <p className="text-2xl font-bold" style={{ color: "var(--app-fg)" }}>
+                    {item.name}
+                  </p>
                 </div>
-                <p className="text-2xl font-extrabold text-slate-200">{item.gpa}</p>
+                <p className="text-2xl font-extrabold" style={{ color: "var(--app-fg)" }}>
+                  {item.gpa}
+                </p>
               </div>
             </article>
           </div>

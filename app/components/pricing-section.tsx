@@ -25,7 +25,7 @@ const PLANS = [
   },
   {
     name: "Pro Weekly",
-    price: "$0.50",
+    price: "$0.70",
     period: "/week",
     subtitle: "Flexible short-term plan for exam weeks",
     cta: "Try Weekly",
@@ -46,7 +46,7 @@ const PLANS = [
   },
   {
     name: "Pro Monthly",
-    price: "$2.00",
+    price: "$2.40",
     period: "/month",
     subtitle: "Most popular for consistent learning",
     cta: "Go Monthly",
@@ -90,7 +90,10 @@ const PLANS = [
 
 export default function PricingSection({ compact = false }: PricingSectionProps) {
   return (
-    <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-[#020817] px-6 py-14">
+    <section
+      className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-6 py-14"
+      style={{ backgroundColor: "var(--app-bg)" }}
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl font-bold md:text-5xl">Simple, Professional Pricing</h2>
@@ -107,8 +110,8 @@ export default function PricingSection({ compact = false }: PricingSectionProps)
               style={{
                 borderColor: plan.highlight ? "#7c3aed" : "var(--app-border)",
                 background: plan.highlight
-                  ? "linear-gradient(180deg, rgba(124,58,237,0.18) 0%, rgba(13,29,54,1) 45%, rgba(13,29,54,1) 100%)"
-                  : "linear-gradient(180deg, rgba(13,29,54,0.95) 0%, rgba(13,29,54,1) 100%)",
+                  ? "linear-gradient(180deg, color-mix(in srgb, #7c3aed 24%, var(--app-card)) 0%, var(--app-card) 50%, var(--app-card) 100%)"
+                  : "linear-gradient(180deg, color-mix(in srgb, var(--app-card) 86%, var(--app-bg) 14%) 0%, var(--app-card) 100%)",
                 boxShadow: plan.highlight ? "0 0 44px rgba(124,58,237,0.28)" : "var(--app-shadow-soft)",
               }}
             >
@@ -127,7 +130,7 @@ export default function PricingSection({ compact = false }: PricingSectionProps)
               <p className="text-2xl font-bold">{plan.name}</p>
               <div className="mt-4 flex items-end gap-2">
                 <p className="text-6xl font-extrabold">{plan.price}</p>
-                <p className="pb-2 text-3xl" style={{ color: "var(--app-muted)" }}>
+                <p className="pb-2 text-sm md:text-base" style={{ color: "var(--app-muted)" }}>
                   {plan.period}
                 </p>
               </div>
@@ -137,12 +140,12 @@ export default function PricingSection({ compact = false }: PricingSectionProps)
 
               <Link
                 href={plan.href}
-                className="mt-6 inline-flex w-full items-center justify-center rounded-2xl border px-4 py-3 text-xl font-bold transition hover:-translate-y-0.5"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-2xl border px-4 py-3 text-xl font-bold transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_24px_rgba(123,163,255,0.35)]"
                 style={{
                   borderColor: plan.highlight ? "#c084fc" : "var(--app-border)",
                   background: plan.highlight
                     ? "linear-gradient(90deg, #7c3aed 0%, #d946ef 100%)"
-                    : "color-mix(in srgb, var(--app-card) 88%, black 12%)",
+                    : "linear-gradient(90deg, var(--app-accent-strong) 0%, var(--app-accent) 100%)",
                   color: "white",
                 }}
               >
@@ -152,13 +155,13 @@ export default function PricingSection({ compact = false }: PricingSectionProps)
               <ul className={`mt-6 space-y-3 ${compact ? "text-sm" : "text-lg"}`}>
                 {plan.includes.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span style={{ color: "#86efac" }}>✓</span>
+                    <span style={{ color: "#22c55e" }}>+</span>
                     <span>{item}</span>
                   </li>
                 ))}
                 {plan.excludes.map((item) => (
                   <li key={item} className="flex items-start gap-2" style={{ color: "var(--app-muted)" }}>
-                    <span style={{ color: "#fca5a5" }}>✕</span>
+                    <span style={{ color: "#ef4444" }}>-</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -172,7 +175,7 @@ export default function PricingSection({ compact = false }: PricingSectionProps)
           style={{
             borderColor: "var(--app-border)",
             background:
-              "radial-gradient(120% 120% at 10% 0%, rgba(37,99,235,0.14) 0%, rgba(2,8,23,0.92) 40%, rgba(2,8,23,1) 100%)",
+              "radial-gradient(120% 120% at 10% 0%, color-mix(in srgb, var(--app-accent) 22%, var(--app-bg)) 0%, var(--app-card) 50%, var(--app-bg) 100%)",
           }}
         >
           {[
@@ -183,7 +186,7 @@ export default function PricingSection({ compact = false }: PricingSectionProps)
           ].map((item) => (
             <div key={item.title} className="text-center">
               <div
-                className="mx-auto mb-3 inline-flex h-14 w-14 items-center justify-center rounded-2xl border text-2xl"
+                className="mx-auto mb-3 inline-flex h-14 w-14 items-center justify-center rounded-2xl border text-2xl font-semibold"
                 style={{
                   borderColor: "var(--app-border)",
                   backgroundColor: "color-mix(in srgb, var(--app-card) 82%, transparent)",

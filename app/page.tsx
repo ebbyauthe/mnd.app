@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getCurrentUserFromCookieHeader } from "@/lib/auth";
@@ -107,65 +107,152 @@ export default async function Home() {
   return (
     <main className="min-h-[calc(100vh-56px)] px-6 py-6 md:py-8">
       <section className="mx-auto max-w-7xl">
-        <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden bg-[#020817] px-6 py-12 text-[#e6eeff] md:py-16">
+        <div
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden px-6 py-12 md:py-16"
+          style={{ backgroundColor: "var(--app-bg)" }}
+        >
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
             <div className="relative min-h-[420px]">
-              <div className="absolute inset-0 rounded-3xl border border-white/10 bg-gradient-to-br from-[#0f1736] to-[#0a1025] shadow-[0_0_120px_rgba(23,69,194,0.35)]" />
+              <div
+                className="absolute inset-0 rounded-3xl border"
+                style={{
+                  borderColor: "var(--app-border)",
+                  background:
+                    "linear-gradient(135deg, color-mix(in srgb, var(--app-card) 90%, var(--app-bg) 10%), color-mix(in srgb, var(--app-bg) 78%, var(--app-card) 22%))",
+                  boxShadow: "0 0 120px color-mix(in srgb, var(--app-accent) 24%, transparent)",
+                }}
+              />
 
-              <div className="hero-float-a absolute left-[6%] top-[7%] w-56 rounded-2xl border border-violet-300/35 bg-[#181f45]/95 p-4 shadow-2xl">
-                <p className="text-xs font-semibold text-violet-300">QUIZ - CHEMISTRY</p>
-                <p className="mt-3 text-lg font-bold text-white">What is Avogadro&apos;s number?</p>
-                <p className="mt-2 text-sm text-slate-300">6.022 x 10^23</p>
-              </div>
-
-              <div className="hero-float-b absolute left-[8%] top-[30%] w-[72%] rounded-2xl border border-white/10 bg-[#121936]/90 p-5">
+              <div
+                className="absolute left-[8%] top-[16%] w-[84%] rounded-2xl border p-5 shadow-2xl"
+                style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+              >
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-slate-300">Welcome back</p>
-                  <span className="rounded-full border border-violet-300/45 bg-violet-400/10 px-3 py-1 text-xs font-semibold text-violet-200">
-                    + Upload
+                  <p className="text-sm font-semibold" style={{ color: "var(--app-muted)" }}>Studyroom live preview</p>
+                  <span
+                    className="rounded-full border px-3 py-1 text-xs font-semibold"
+                    style={{
+                      borderColor: "var(--app-border)",
+                      color: "var(--app-accent-strong)",
+                      backgroundColor: "color-mix(in srgb, var(--app-accent) 12%, transparent)",
+                    }}
+                  >
+                    Session active
                   </span>
                 </div>
-                <div className="mt-4 h-36 rounded-xl border border-white/10 bg-white/[0.02]" />
+
+                <div className="mt-4 grid grid-cols-3 gap-3">
+                  {[
+                    { label: "Current Topic", value: "Cell Biology" },
+                    { label: "Mastery", value: "74%" },
+                    { label: "Streak", value: "12 days" },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-xl border p-3"
+                      style={{ borderColor: "var(--app-border)", backgroundColor: "color-mix(in srgb, var(--app-card) 92%, var(--app-bg) 8%)" }}
+                    >
+                      <p className="text-xs" style={{ color: "var(--app-muted)" }}>{item.label}</p>
+                      <p className="mt-1 text-lg font-bold">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4">
+                  <p className="text-sm font-medium" style={{ color: "var(--app-muted)" }}>
+                    Progress this week
+                  </p>
+                  <div
+                    className="mt-2 h-2 overflow-hidden rounded-full"
+                    style={{ backgroundColor: "color-mix(in srgb, var(--app-border) 55%, transparent)" }}
+                  >
+                    <div className="hero-progress h-full rounded-full" />
+                  </div>
+                </div>
               </div>
 
-              <div className="hero-float-c absolute right-[2%] top-[40%] w-64 rounded-2xl border border-violet-300/35 bg-[#1a2048]/95 p-4">
-                <p className="text-xs font-semibold text-violet-300">FLASHCARD</p>
-                <p className="mt-3 text-2xl font-bold text-white">Pythagorean Theorem</p>
-                <p className="mt-2 text-sm text-slate-300">In right triangles: a^2 + b^2 = c^2.</p>
+              <div
+                className="hero-float-a absolute left-[4%] top-[6%] w-52 rounded-2xl border p-4"
+                style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+              >
+                <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
+                  STEP 1
+                </p>
+                <p className="mt-2 text-xl font-bold">Upload notes</p>
+                <p className="mt-2 text-sm" style={{ color: "var(--app-muted)" }}>
+                  PDF, text, audio, or YouTube links
+                </p>
               </div>
 
-              <div className="hero-float-a absolute bottom-[4%] left-[10%] w-60 rounded-2xl border border-cyan-300/35 bg-[#142043]/95 p-4">
-                <p className="text-xs font-semibold text-emerald-300">NOTES</p>
-                <p className="mt-2 text-xl font-bold text-white">Constitutional Law</p>
-                <p className="mt-2 text-sm text-slate-300">The constitution limits government power and protects rights.</p>
+              <div
+                className="hero-float-b absolute right-[4%] top-[10%] w-56 rounded-2xl border p-4"
+                style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+              >
+                <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
+                  STEP 2
+                </p>
+                <p className="mt-2 text-xl font-bold">Generate study guide</p>
+                <p className="mt-2 text-sm" style={{ color: "var(--app-muted)" }}>
+                  Clear explanations and examples
+                </p>
+              </div>
+
+              <div
+                className="hero-float-c absolute right-[10%] bottom-[7%] w-60 rounded-2xl border p-4"
+                style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+              >
+                <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
+                  STEP 3
+                </p>
+                <p className="mt-2 text-xl font-bold">Practice + retain</p>
+                <p className="mt-2 text-sm" style={{ color: "var(--app-muted)" }}>
+                  Flashcards, quizzes, and progress tracking
+                </p>
               </div>
             </div>
 
             <div>
-              <p className="inline-flex rounded-full border border-violet-300/30 px-4 py-1 text-xs font-semibold text-violet-200">
+              <p
+                className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs font-semibold"
+                style={{ borderColor: "var(--app-border)", color: "var(--app-accent-strong)" }}
+              >
+                <span
+                  className="inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold"
+                  style={{
+                    backgroundColor: "var(--app-accent-strong)",
+                    color: "white",
+                  }}
+                  aria-hidden="true"
+                >
+                  ✓
+                </span>
                 TRUSTED BY STUDENTS
               </p>
               <h1 className="mt-5 text-5xl font-extrabold leading-[1.02] md:text-7xl">
-                Learn Smarter…
+                Learn Smarter...
                 <br />
                 <span className="bg-gradient-to-r from-violet-300 to-blue-300 bg-clip-text text-transparent">
                   Not Harder.
                 </span>
               </h1>
-              <p className="mt-5 max-w-xl text-lg text-slate-300">
+              <p className="mt-5 max-w-xl text-lg" style={{ color: "var(--app-muted)" }}>
                 Turn notes and lectures into AI flashcards, study guides, and quiz practice. Focus on learning, not formatting.
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-slate-300">
+              <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold" style={{ color: "var(--app-muted)" }}>
                 {["PDFS - IMAGES - AUDIO", "FLASHCARDS - NOTES - QUIZZES", "WEB"].map((chip) => (
-                  <span key={chip} className="rounded-full border border-white/15 px-4 py-2">
+                  <span key={chip} className="rounded-full border px-4 py-2" style={{ borderColor: "var(--app-border)" }}>
                     {chip}
                   </span>
                 ))}
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/studyroom" className="rounded-full bg-white px-8 py-3 font-bold text-[#0a1025]">
+                <Link
+                  href="/studyroom"
+                  className="rounded-full px-8 py-3 font-bold text-white transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_24px_rgba(47,124,240,0.45)]"
+                  style={{ background: "linear-gradient(135deg, var(--app-accent-strong), var(--app-accent))" }}
+                >
                   Get Started Free
                 </Link>
               </div>
@@ -173,9 +260,12 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative left-1/2 right-1/2 mt-8 w-screen -translate-x-1/2 overflow-hidden bg-[#020817] px-6 py-8">
+        <div
+          className="relative left-1/2 right-1/2 mt-8 w-screen -translate-x-1/2 overflow-hidden px-6 py-8"
+          style={{ backgroundColor: "var(--app-bg)" }}
+        >
           <div className="mx-auto max-w-7xl">
-            <p className="text-center text-xl font-medium text-slate-200 md:text-3xl">
+            <p className="text-center text-xl font-medium  md:text-3xl">
               Students at leading universities and organizations trust lerna.ai
             </p>
 
@@ -229,17 +319,39 @@ export default async function Home() {
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               <article>
                 <div className="rounded-3xl border p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                  <div className="rounded-3xl p-6" style={{ backgroundColor: "var(--app-bg)", color: "var(--app-fg)" }}>
-                    <p className="text-3xl font-bold">Hey David, what are you studying today?</p>
+                  <div
+                    className="rounded-3xl p-6"
+                    style={{
+                      backgroundColor: "var(--app-bg)",
+                      color: "var(--app-fg)",
+                      boxShadow: "inset 0 1px 0 color-mix(in srgb, var(--app-border) 45%, transparent)",
+                    }}
+                  >
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em]" style={{ color: "var(--app-muted)" }}>
+                      Quick Start
+                    </p>
+                    <h3 className="mt-2 text-4xl font-extrabold leading-tight">Hey David, what are you studying today?</h3>
+                    <p className="mt-2 text-sm" style={{ color: "var(--app-muted)" }}>
+                      Choose how you want to begin and Lerna will build your study set instantly.
+                    </p>
                     <div className="mt-5 grid gap-3 sm:grid-cols-3">
                       {[
-                        { label: "Upload", icon: "↑" },
-                        { label: "Paste", icon: "⛓" },
-                        { label: "Record", icon: "●" },
+                        { label: "Upload", icon: "↑", hint: "Files, docs, slides" },
+                        { label: "Paste", icon: "⛓", hint: "Text, links, notes" },
+                        { label: "Record", icon: "●", hint: "Live class audio" },
                       ].map((item) => (
-                        <div key={item.label} className="rounded-2xl border p-3 text-sm font-semibold" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                          <span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>{item.icon}</span>
-                          {item.label}
+                        <div
+                          key={item.label}
+                          className="rounded-2xl border p-3 transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_22px_rgba(47,124,240,0.16)]"
+                          style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+                        >
+                          <p className="text-sm font-semibold">
+                            <span className="mr-2" style={{ color: "var(--app-accent-strong)" }}>{item.icon}</span>
+                            {item.label}
+                          </p>
+                          <p className="mt-1 text-xs" style={{ color: "var(--app-muted)" }}>
+                            {item.hint}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -311,7 +423,7 @@ export default async function Home() {
             <div className="mt-12 flex justify-center">
               <Link
                 href="/dashboard"
-                className="rounded-2xl px-12 py-4 text-4xl font-bold text-white shadow-[0_8px_24px_rgba(249,115,22,0.35)] transition hover:-translate-y-0.5"
+                className="rounded-2xl px-12 py-4 text-4xl font-bold text-white shadow-[0_8px_24px_rgba(249,115,22,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_26px_rgba(47,124,240,0.5)]"
                 style={{ background: "linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%)", boxShadow: "0 8px 24px rgba(37,99,235,0.35)" }}
               >
                 Get Started Now
@@ -320,9 +432,12 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden bg-[#020817] px-6 py-14">
+        <div
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden px-6 py-14"
+          style={{ backgroundColor: "var(--app-bg)" }}
+        >
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-center text-4xl font-bold text-slate-100 md:text-5xl">
+            <h2 className="text-center text-4xl font-bold  md:text-5xl">
               Trusted by 100k+ students
             </h2>
 
@@ -330,7 +445,10 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-[#020817] px-6 py-14">
+        <div
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-6 py-14"
+          style={{ backgroundColor: "var(--app-bg)" }}
+        >
           <div className="mx-auto max-w-7xl">
             <h2 className="text-center text-4xl font-bold md:text-5xl">
               Why Students Choose Lerna Over Old Study Habits
@@ -341,87 +459,116 @@ export default async function Home() {
             </p>
 
             <div className="mt-10 grid gap-8 lg:grid-cols-3">
-              <article className="overflow-hidden rounded-3xl border" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                <div className="border-b p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "color-mix(in srgb, var(--app-card) 85%, #2dd4bf 15%)" }}>
-                  <p className="text-3xl font-bold">Smarter Memory Methods, Not Just Re-reading</p>
-                </div>
-                <div className="space-y-6 p-6">
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>TRADITIONAL METHODS</p>
-                    <ul className="mt-3 space-y-2 text-lg">
-                      <li>✕ Reading notes without active recall</li>
-                      <li>✕ Reviewing the same pages repeatedly</li>
-                      <li>✕ No feedback on weak areas</li>
-                    </ul>
+              {[
+                {
+                  title: "Memory That Actually Sticks",
+                  icon: "📘",
+                  tone: "color-mix(in srgb, #34d399 28%, var(--app-card))",
+                  old: [
+                    "Passive rereading with low retention",
+                    "Random revision with no system",
+                    "No clear signal on weak concepts",
+                  ],
+                  newWay: [
+                    "Active-recall prompts from your own notes",
+                    "Spaced review flow built into study sessions",
+                    "Immediate feedback on what to relearn",
+                  ],
+                },
+                {
+                  title: "Faster Start, Better Personalization",
+                  icon: "⚡",
+                  tone: "color-mix(in srgb, #f59e0b 24%, var(--app-card))",
+                  old: [
+                    "Long prep before real studying begins",
+                    "One-size-fits-all study materials",
+                    "Difficult to adjust as exams get closer",
+                  ],
+                  newWay: [
+                    "Upload once and generate study assets instantly",
+                    "Explanations matched to your level",
+                    "Practice set adapts with your progress",
+                  ],
+                },
+                {
+                  title: "More Value in One Studyroom",
+                  icon: "$",
+                  tone: "color-mix(in srgb, #a78bfa 24%, var(--app-card))",
+                  old: [
+                    "Paying for multiple disconnected tools",
+                    "Costly tutoring for routine review",
+                    "Limited help outside fixed schedules",
+                  ],
+                  newWay: [
+                    "All core study modes in one platform",
+                    "Affordable plans with practical coverage",
+                    "Anytime access across your study workflow",
+                  ],
+                },
+              ].map((card) => (
+                <article
+                  key={card.title}
+                  className="overflow-hidden rounded-3xl border"
+                  style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+                >
+                  <div className="border-b p-6" style={{ borderColor: "var(--app-border)", backgroundColor: card.tone }}>
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold" style={{ backgroundColor: "color-mix(in srgb, white 70%, transparent)" }}>
+                      {card.icon}
+                    </div>
+                    <p className="text-3xl font-bold">{card.title}</p>
                   </div>
-                  <div className="text-center text-4xl" style={{ color: "var(--app-accent-strong)" }}>↓</div>
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-accent-strong)" }}>LERNA AI</p>
-                    <ul className="mt-3 space-y-2 text-lg">
-                      <li>✓ Retrieval practice built into each session</li>
-                      <li>✓ Smart spaced-review reminders</li>
-                      <li>✓ Instant insight on what to improve</li>
-                    </ul>
-                  </div>
-                </div>
-              </article>
 
-              <article className="overflow-hidden rounded-3xl border" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                <div className="border-b p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "color-mix(in srgb, var(--app-card) 85%, #f59e0b 15%)" }}>
-                  <p className="text-3xl font-bold">Faster Prep with Personalized Study Paths</p>
-                </div>
-                <div className="space-y-6 p-6">
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>TRADITIONAL METHODS</p>
-                    <ul className="mt-3 space-y-2 text-lg">
-                      <li>✕ Long setup before real studying starts</li>
-                      <li>✕ Generic resources for every student</li>
-                      <li>✕ Hard to adjust as topics change</li>
-                    </ul>
-                  </div>
-                  <div className="text-center text-4xl" style={{ color: "var(--app-accent-strong)" }}>↓</div>
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-accent-strong)" }}>LERNA AI</p>
-                    <ul className="mt-3 space-y-2 text-lg">
-                      <li>✓ Notes turned into study sets in seconds</li>
-                      <li>✓ Explanations matched to your level</li>
-                      <li>✓ Study flow updates with your progress</li>
-                    </ul>
-                  </div>
-                </div>
-              </article>
+                  <div className="space-y-6 p-6">
+                    <div>
+                      <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>
+                        BEFORE
+                      </p>
+                      <ul className="mt-3 space-y-3 text-lg">
+                        {card.old.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold" style={{ backgroundColor: "color-mix(in srgb, #ef4444 20%, transparent)", color: "#ef4444" }}>
+                              x
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-              <article className="overflow-hidden rounded-3xl border" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
-                <div className="border-b p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "color-mix(in srgb, var(--app-card) 85%, #a78bfa 15%)" }}>
-                  <p className="text-3xl font-bold">One Platform, Better Value, Anytime Access</p>
-                </div>
-                <div className="space-y-6 p-6">
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>TRADITIONAL METHODS</p>
-                    <ul className="mt-3 space-y-2 text-lg">
-                      <li>✕ High tutoring and prep costs</li>
-                      <li>✕ Several apps to manage at once</li>
-                      <li>✕ Limited study help outside set hours</li>
-                    </ul>
+                    <div className="flex items-center gap-3">
+                      <div className="h-px flex-1" style={{ backgroundColor: "var(--app-border)" }} />
+                      <span className="text-2xl font-bold" style={{ color: "var(--app-accent-strong)" }}>v</span>
+                      <div className="h-px flex-1" style={{ backgroundColor: "var(--app-border)" }} />
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-accent-strong)" }}>
+                        WITH LERNA
+                      </p>
+                      <ul className="mt-3 space-y-3 text-lg">
+                        {card.newWay.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold" style={{ backgroundColor: "color-mix(in srgb, #22c55e 20%, transparent)", color: "#16a34a" }}>
+                              v
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <div className="text-center text-4xl" style={{ color: "var(--app-accent-strong)" }}>↓</div>
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-accent-strong)" }}>LERNA AI</p>
-                    <ul className="mt-3 space-y-2 text-lg">
-                      <li>✓ Budget-friendly all-in-one toolkit</li>
-                      <li>✓ Upload, review, quiz, and track in one place</li>
-                      <li>✓ Study support whenever you need it</li>
-                    </ul>
-                  </div>
-                </div>
-              </article>
+                </article>
+              ))}
             </div>
           </div>
         </div>
 
         <PricingSection compact />
 
-        <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-[#020817] px-6 py-14">
+        <div
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-6 py-14"
+          style={{ backgroundColor: "var(--app-bg)" }}
+        >
           <div className="mx-auto max-w-5xl">
             <h2 className="text-center text-4xl font-bold md:text-5xl">Frequently Asked Questions</h2>
 
@@ -461,10 +608,25 @@ export default async function Home() {
                     <div className="flex items-center justify-between gap-4">
                       <span>{item.q}</span>
                       <span
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border text-xl transition group-open:rotate-180"
-                        style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}
+                        className="inline-flex h-8 w-8 items-center justify-center transition-all duration-300 ease-out group-open:rotate-180 group-open:translate-y-0.5"
+                        style={{ color: "var(--app-muted)" }}
                       >
-                        ˅
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="20"
+                          height="20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M6 9l6 6 6-6"
+                            stroke="currentColor"
+                            strokeWidth="1.75"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
                       </span>
                     </div>
                   </summary>
@@ -477,7 +639,10 @@ export default async function Home() {
           </div>
         </div>
 
-        <footer className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 border-t px-6 py-14" style={{ borderColor: "var(--app-border)", backgroundColor: "#020817" }}>
+        <footer
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 border-t px-6 py-14"
+          style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-bg)" }}
+        >
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-5">
               <div className="xl:col-span-1">
@@ -538,7 +703,7 @@ export default async function Home() {
             </div>
 
             <div className="mt-10 border-t pt-6 text-base" style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}>
-              <p>© 2026 Lerna AI. All rights reserved.</p>
+              <p>(c) 2026 Lerna AI. All rights reserved.</p>
             </div>
           </div>
         </footer>
@@ -546,3 +711,6 @@ export default async function Home() {
     </main>
   );
 }
+
+
+

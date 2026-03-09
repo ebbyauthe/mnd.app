@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --app-bg: #020817;
-  --app-bg-soft: #06142a;
-  --app-card: #0d1d36;
-  --app-card-soft: #11284b;
-  --app-fg: #e7f0ff;
-  --app-muted: #9dc2ff;
-  --app-border: #1f4380;
+  --app-bg: #f8fbff;
+  --app-bg-soft: #eef4ff;
+  --app-card: #ffffff;
+  --app-card-soft: #f3f8ff;
+  --app-fg: #0a1730;
+  --app-muted: #3e5f92;
+  --app-border: #bfd3f6;
   --app-accent: #2f7cf0;
   --app-accent-strong: #0763da;
-  --app-shadow: 0 12px 34px color-mix(in srgb, var(--app-accent) 12%, transparent);
-  --app-shadow-soft: 0 6px 20px color-mix(in srgb, var(--app-accent) 9%, transparent);
+  --app-shadow: 0 12px 34px color-mix(in srgb, var(--app-accent) 15%, transparent);
+  --app-shadow-soft: 0 6px 20px color-mix(in srgb, var(--app-accent) 10%, transparent);
 }
 
 @theme inline {
@@ -19,6 +19,20 @@
   --color-foreground: var(--app-fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+[data-theme="light"] {
+  --app-bg: #f8fbff;
+  --app-bg-soft: #eef4ff;
+  --app-card: #ffffff;
+  --app-card-soft: #f3f8ff;
+  --app-fg: #0a1730;
+  --app-muted: #3e5f92;
+  --app-border: #bfd3f6;
+  --app-accent: #2f7cf0;
+  --app-accent-strong: #0763da;
+  --app-shadow: 0 12px 34px color-mix(in srgb, var(--app-accent) 15%, transparent);
+  --app-shadow-soft: 0 6px 20px color-mix(in srgb, var(--app-accent) 10%, transparent);
 }
 
 [data-theme="dark"] {
@@ -37,7 +51,7 @@
 
 body {
   min-height: 100vh;
-  background: var(--app-bg);
+  background: linear-gradient(180deg, var(--app-bg-soft) 0%, var(--app-bg) 22%, var(--app-bg) 100%);
   color: var(--app-fg);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   transition: background 220ms ease, color 220ms ease;
@@ -225,6 +239,18 @@ body {
 .hero-float-b { animation: heroFloatB 7s ease-in-out infinite; }
 .hero-float-c { animation: heroFloatC 6.4s ease-in-out infinite; }
 
+@keyframes heroProgress {
+  0% { width: 34%; }
+  50% { width: 78%; }
+  100% { width: 34%; }
+}
+
+.hero-progress {
+  width: 62%;
+  background: linear-gradient(90deg, var(--app-accent-strong), var(--app-accent));
+  animation: heroProgress 5.8s ease-in-out infinite;
+}
+
 @keyframes trustMarquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
@@ -297,7 +323,7 @@ body {
 }
 
 .review-quote {
-  color: color-mix(in srgb, var(--app-muted) 74%, white 26%);
+  color: color-mix(in srgb, var(--app-fg) 78%, var(--app-muted) 22%);
   font-size: 1.05rem;
   line-height: 1.5;
   font-style: italic;
@@ -311,6 +337,19 @@ body {
   border: 1px solid color-mix(in srgb, var(--app-border) 70%, white 30%);
   object-fit: cover;
   background: #0b1327;
+}
+
+[data-theme="light"] .review-card {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--app-card) 94%, white 6%),
+    color-mix(in srgb, var(--app-card-soft) 92%, var(--app-bg) 8%)
+  );
+  border-color: color-mix(in srgb, var(--app-border) 86%, #7ba3ff 14%);
+}
+
+[data-theme="light"] .review-quote {
+  color: color-mix(in srgb, var(--app-fg) 82%, #1d4ed8 18%);
 }
 
 @media (prefers-reduced-motion: reduce) {

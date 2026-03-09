@@ -83,10 +83,24 @@ export default function AuthNav() {
   if (!user) {
     return (
       <>
-        <Link href="/pricing" className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium text-slate-200 transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]" style={{ color: pathname === "/pricing" ? "var(--app-fg)" : undefined }}>
+        <Link
+          href="/pricing"
+          className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
+          style={{
+            color: pathname === "/pricing" ? "var(--app-fg)" : "var(--app-fg)",
+            borderColor: "color-mix(in srgb, var(--app-border) 65%, transparent)",
+          }}
+        >
           Pricing
         </Link>
-        <Link href="/support" className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium text-slate-200 transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]">
+        <Link
+          href="/support"
+          className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
+          style={{
+            color: "var(--app-fg)",
+            borderColor: "color-mix(in srgb, var(--app-border) 65%, transparent)",
+          }}
+        >
           Support
         </Link>
         <button
@@ -94,23 +108,31 @@ export default function AuthNav() {
           onClick={cycleLanguage}
           className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
           style={{
-            color: "#d6e4ff",
+            color: "var(--app-fg)",
+            borderColor: "color-mix(in srgb, var(--app-border) 65%, transparent)",
             backgroundColor: "color-mix(in srgb, var(--app-card) 78%, transparent)",
           }}
         >
           {lang} v
         </button>
-        <Link href="/auth?mode=login" className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium text-slate-100 transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]">
+        <Link
+          href="/auth?mode=login"
+          className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
+          style={{
+            color: "var(--app-fg)",
+            borderColor: "color-mix(in srgb, var(--app-border) 65%, transparent)",
+          }}
+        >
           Sign In
         </Link>
         <Link
           href="/auth?mode=signup"
-          className="rounded-full border px-5 py-1.5 text-sm font-semibold"
+          className="rounded-full border px-5 py-1.5 text-sm font-semibold transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.35)]"
           style={{
-            borderColor: "white",
+            borderColor: "color-mix(in srgb, var(--app-fg) 85%, black 15%)",
             backgroundColor: "white",
-            color: "#0a1025",
-            boxShadow: "0 0 28px rgba(255,255,255,0.18)",
+            color: "black",
+            boxShadow: "0 0 18px color-mix(in srgb, var(--app-accent) 20%, transparent)",
           }}
         >
           Get Started
