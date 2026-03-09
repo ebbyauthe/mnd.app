@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type AuthMode = "login" | "signup";
@@ -14,7 +14,7 @@ type ApiResponse = {
 
 const PROVIDERS = ["google", "apple", "phone", "facebook", "discord"] as const;
 
-export default function AuthPage() {
+function AuthPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const nextPath = searchParams.get("next") ?? "/studyroom";
@@ -178,5 +178,13 @@ export default function AuthPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={<main className="min-h-[calc(100vh-56px)] px-6 py-10" />}>
+      <AuthPageContent />
+    </Suspense>
   );
 }
