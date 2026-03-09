@@ -72,6 +72,8 @@ export default function MobileNav() {
     color: active ? "var(--app-fg)" : "var(--app-muted)",
   });
 
+  const menuLinkClass = "block rounded-xl border px-3 py-2.5 text-sm font-medium tracking-[0.01em]";
+
   return (
     <div className="relative">
       <button
@@ -79,57 +81,72 @@ export default function MobileNav() {
         aria-label="Open menu"
         aria-expanded={open}
         onClick={() => setOpen((prev) => !prev)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-xl border"
-        style={{ borderColor: "var(--app-border)", color: "var(--app-fg)" }}
+        className="inline-flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 hover:bg-[color:color-mix(in_srgb,var(--app-card)_72%,transparent)] hover:shadow-[0_0_16px_color-mix(in_srgb,var(--app-accent)_20%,transparent)]"
+        style={{ color: "var(--app-fg)" }}
       >
         <span className="sr-only">Menu</span>
-        <span className="relative inline-flex h-4 w-5 flex-col justify-between">
-          <span className="h-0.5 w-full rounded-full bg-current" />
-          <span className="h-0.5 w-full rounded-full bg-current" />
-          <span className="h-0.5 w-full rounded-full bg-current" />
+        <span className="relative inline-flex h-4 w-5">
+          <span
+            className={`absolute left-0 top-0 h-0.5 w-full rounded-full bg-current transition-transform duration-200 ${
+              open ? "translate-y-[7px] rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`absolute left-0 top-[7px] h-0.5 w-full rounded-full bg-current transition-all duration-200 ${
+              open ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`absolute left-0 top-[14px] h-0.5 w-full rounded-full bg-current transition-transform duration-200 ${
+              open ? "-translate-y-[7px] -rotate-45" : ""
+            }`}
+          />
         </span>
       </button>
 
-      {open ? (
-        <div
-          className="absolute right-0 top-12 z-50 w-[min(86vw,320px)] rounded-2xl border p-3 shadow-xl"
-          style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
-        >
+      <div
+        className={`absolute right-0 top-12 z-50 w-[min(86vw,320px)] rounded-2xl border p-3 shadow-xl transition-all duration-200 ${
+          open
+            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none -translate-y-2 scale-[0.98] opacity-0"
+        }`}
+        style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+      >
           <div className="space-y-2">
             <Link
               href="/studyroom"
               onClick={() => setOpen(false)}
-              className="block rounded-xl border px-3 py-2 text-sm font-semibold"
+              className={menuLinkClass}
               style={linkStyle(pathname === "/studyroom" || pathname.startsWith("/studyroom/") || pathname === "/dashboard")}
             >
               Studyroom
             </Link>
 
-            <Link href="/pricing" onClick={() => setOpen(false)} className="block rounded-xl border px-3 py-2 text-sm" style={linkStyle(pathname === "/pricing")}>
+            <Link href="/pricing" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/pricing")}>
               Pricing
             </Link>
-            <Link href="/support" onClick={() => setOpen(false)} className="block rounded-xl border px-3 py-2 text-sm" style={linkStyle(pathname === "/support")}>
+            <Link href="/support" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/support")}>
               Support
             </Link>
 
             {user ? (
               <>
-                <Link href="/profile" onClick={() => setOpen(false)} className="block rounded-xl border px-3 py-2 text-sm" style={linkStyle(pathname === "/profile")}>
+                <Link href="/profile" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/profile")}>
                   Profile
                 </Link>
-                <Link href="/settings" onClick={() => setOpen(false)} className="block rounded-xl border px-3 py-2 text-sm" style={linkStyle(pathname === "/settings")}>
+                <Link href="/settings" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/settings")}>
                   Settings
                 </Link>
               </>
             ) : (
               <>
-                <Link href="/auth?mode=login" onClick={() => setOpen(false)} className="block rounded-xl border px-3 py-2 text-sm" style={linkStyle(pathname === "/auth")}>
+                <Link href="/auth?mode=login" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/auth")}>
                   Sign In
                 </Link>
                 <Link
                   href="/auth?mode=signup"
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl border px-3 py-2 text-center text-sm font-semibold"
+                  className="block rounded-xl border px-3 py-2.5 text-center text-sm font-medium tracking-[0.01em]"
                   style={{
                     borderColor: "color-mix(in srgb, var(--app-fg) 85%, black 15%)",
                     backgroundColor: "white",
@@ -145,7 +162,7 @@ export default function MobileNav() {
               <button
                 type="button"
                 onClick={cycleLanguage}
-                className="rounded-xl border px-3 py-2 text-sm"
+                className="rounded-xl border px-3 py-2.5 text-sm font-medium tracking-[0.01em]"
                 style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}
               >
                 {lang} v
@@ -159,15 +176,14 @@ export default function MobileNav() {
               <button
                 type="button"
                 onClick={logout}
-                className="mt-1 block w-full rounded-xl border px-3 py-2 text-sm"
+                className="mt-1 block w-full rounded-xl border px-3 py-2.5 text-sm font-medium tracking-[0.01em]"
                 style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}
               >
                 Logout
               </button>
             ) : null}
           </div>
-        </div>
-      ) : null}
+      </div>
     </div>
   );
 }

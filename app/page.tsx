@@ -172,7 +172,7 @@ export default async function Home() {
               </div>
 
               <div
-                className="hero-float-a absolute left-[4%] top-[6%] hidden w-52 rounded-2xl border p-4 sm:block"
+                className="hero-float-a absolute left-[4%] top-[6%] hidden w-52 rounded-2xl border p-4 md:block"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
@@ -185,7 +185,7 @@ export default async function Home() {
               </div>
 
               <div
-                className="hero-float-b absolute right-[4%] top-[10%] hidden w-56 rounded-2xl border p-4 sm:block"
+                className="hero-float-b absolute right-[4%] top-[10%] hidden w-56 rounded-2xl border p-4 md:block"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
@@ -198,7 +198,7 @@ export default async function Home() {
               </div>
 
               <div
-                className="hero-float-c absolute bottom-[7%] right-[10%] hidden w-60 rounded-2xl border p-4 sm:block"
+                className="hero-float-c absolute bottom-[7%] right-[10%] hidden w-60 rounded-2xl border p-4 md:block"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>

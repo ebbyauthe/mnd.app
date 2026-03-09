@@ -66,7 +66,7 @@ export default function RootLayout({
               <img
                 src="/lerna-brand.svg"
                 alt="lerna"
-                className="h-7 w-auto object-contain sm:h-9 md:h-10"
+                className="h-9 w-auto object-contain sm:h-10 md:h-10"
                 loading="eager"
               />
             </Link>
