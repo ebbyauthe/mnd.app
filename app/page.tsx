@@ -105,14 +105,14 @@ export default async function Home() {
   ];
 
   return (
-    <main className="min-h-[calc(100vh-56px)] px-6 py-6 md:py-8">
+    <main className="min-h-[calc(100vh-56px)] overflow-x-clip px-2.5 py-3 sm:px-5 md:px-6 md:py-8">
       <section className="mx-auto max-w-7xl">
         <div
-          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden px-6 py-12 md:py-16"
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden px-3 py-7 sm:px-6 sm:py-12 md:py-16"
           style={{ backgroundColor: "var(--app-bg)" }}
         >
-          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
-            <div className="relative min-h-[420px]">
+          <div className="mx-auto grid max-w-7xl items-center gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
+            <div className="order-2 relative min-h-[240px] sm:min-h-[380px] lg:order-1">
               <div
                 className="absolute inset-0 rounded-3xl border"
                 style={{
@@ -124,7 +124,7 @@ export default async function Home() {
               />
 
               <div
-                className="absolute left-[8%] top-[16%] w-[84%] rounded-2xl border p-5 shadow-2xl"
+                className="absolute left-[8%] top-[16%] w-[84%] rounded-2xl border p-3 shadow-2xl sm:p-5"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <div className="flex items-center justify-between">
@@ -141,7 +141,7 @@ export default async function Home() {
                   </span>
                 </div>
 
-                <div className="mt-4 grid grid-cols-3 gap-3">
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
                   {[
                     { label: "Current Topic", value: "Cell Biology" },
                     { label: "Mastery", value: "74%" },
@@ -172,7 +172,7 @@ export default async function Home() {
               </div>
 
               <div
-                className="hero-float-a absolute left-[4%] top-[6%] w-52 rounded-2xl border p-4"
+                className="hero-float-a absolute left-[4%] top-[6%] hidden w-52 rounded-2xl border p-4 sm:block"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
@@ -185,7 +185,7 @@ export default async function Home() {
               </div>
 
               <div
-                className="hero-float-b absolute right-[4%] top-[10%] w-56 rounded-2xl border p-4"
+                className="hero-float-b absolute right-[4%] top-[10%] hidden w-56 rounded-2xl border p-4 sm:block"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
@@ -198,7 +198,7 @@ export default async function Home() {
               </div>
 
               <div
-                className="hero-float-c absolute right-[10%] bottom-[7%] w-60 rounded-2xl border p-4"
+                className="hero-float-c absolute bottom-[7%] right-[10%] hidden w-60 rounded-2xl border p-4 sm:block"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <p className="text-xs font-semibold" style={{ color: "var(--app-accent-strong)" }}>
@@ -211,7 +211,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <div>
+            <div className="order-1 lg:order-2">
               <p
                 className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs font-semibold"
                 style={{ borderColor: "var(--app-border)", color: "var(--app-accent-strong)" }}
@@ -228,18 +228,18 @@ export default async function Home() {
                 </span>
                 TRUSTED BY STUDENTS
               </p>
-              <h1 className="mt-5 text-5xl font-extrabold leading-[1.02] md:text-7xl">
+              <h1 className="mt-4 text-3xl font-extrabold leading-[1.02] sm:text-5xl md:text-7xl">
                 Learn Smarter...
                 <br />
                 <span className="bg-gradient-to-r from-violet-300 to-blue-300 bg-clip-text text-transparent">
                   Not Harder.
                 </span>
               </h1>
-              <p className="mt-5 max-w-xl text-lg" style={{ color: "var(--app-muted)" }}>
+              <p className="mt-4 max-w-xl text-sm sm:text-lg" style={{ color: "var(--app-muted)" }}>
                 Turn notes and lectures into AI flashcards, study guides, and quiz practice. Focus on learning, not formatting.
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold" style={{ color: "var(--app-muted)" }}>
+              <div className="mt-5 flex flex-wrap gap-2 text-[11px] font-semibold sm:text-xs" style={{ color: "var(--app-muted)" }}>
                 {["PDFS - IMAGES - AUDIO", "FLASHCARDS - NOTES - QUIZZES", "WEB"].map((chip) => (
                   <span key={chip} className="rounded-full border px-4 py-2" style={{ borderColor: "var(--app-border)" }}>
                     {chip}
@@ -247,7 +247,7 @@ export default async function Home() {
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/studyroom"
                   className="rounded-full px-8 py-3 font-bold text-white transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_24px_rgba(47,124,240,0.45)]"
@@ -261,11 +261,11 @@ export default async function Home() {
         </div>
 
         <div
-          className="relative left-1/2 right-1/2 mt-8 w-screen -translate-x-1/2 overflow-hidden px-6 py-8"
+          className="relative left-1/2 right-1/2 mt-6 w-screen -translate-x-1/2 overflow-hidden px-3 py-7 sm:px-6 sm:py-8"
           style={{ backgroundColor: "var(--app-bg)" }}
         >
           <div className="mx-auto max-w-7xl">
-            <p className="text-center text-xl font-medium  md:text-3xl">
+            <p className="text-center text-base font-medium sm:text-xl md:text-3xl">
               Students at leading universities and organizations trust lerna.ai
             </p>
 
@@ -312,9 +312,9 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-6 py-12">
+        <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-3 py-10 sm:px-6 sm:py-12">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-center text-4xl font-bold md:text-5xl">Our Process</h2>
+            <h2 className="text-center text-2xl font-bold sm:text-4xl md:text-5xl">Our Process</h2>
 
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               <article>
@@ -330,7 +330,7 @@ export default async function Home() {
                     <p className="text-sm font-semibold uppercase tracking-[0.16em]" style={{ color: "var(--app-muted)" }}>
                       Quick Start
                     </p>
-                    <h3 className="mt-2 text-4xl font-extrabold leading-tight">Hey David, what are you studying today?</h3>
+                    <h3 className="mt-2 text-2xl font-extrabold leading-tight sm:text-4xl">Hey David, what are you studying today?</h3>
                     <p className="mt-2 text-sm" style={{ color: "var(--app-muted)" }}>
                       Choose how you want to begin and Lerna will build your study set instantly.
                     </p>
@@ -357,7 +357,7 @@ export default async function Home() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 text-3xl font-semibold leading-snug">
+                <p className="mt-4 text-lg font-semibold leading-snug sm:text-2xl md:text-3xl">
                   <span style={{ color: "var(--app-accent-strong)" }}>Upload or Paste Content:</span> Whether it is your class notes, a YouTube video, or a webpage.
                 </p>
               </article>
@@ -373,7 +373,7 @@ export default async function Home() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 text-3xl font-semibold leading-snug">
+                <p className="mt-4 text-lg font-semibold leading-snug sm:text-2xl md:text-3xl">
                   <span style={{ color: "var(--app-accent-strong)" }}>Instant Flashcards:</span> Turn hours of study into minutes with AI generated flashcards.
                 </p>
               </article>
@@ -381,7 +381,7 @@ export default async function Home() {
               <article>
                 <div className="rounded-3xl border p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
                   <div className="rounded-3xl p-6" style={{ backgroundColor: "var(--app-bg)", color: "var(--app-fg)" }}>
-                    <div className="grid grid-cols-[120px_1fr] gap-3">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-[120px_1fr]">
                       <div className="rounded-xl p-4 text-center" style={{ backgroundColor: "var(--app-card)" }}>
                         <p className="text-4xl font-bold">86%</p>
                         <p className="text-xs font-semibold" style={{ color: "var(--app-muted)" }}>Overall Grade</p>
@@ -397,7 +397,7 @@ export default async function Home() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 text-3xl font-semibold leading-snug">
+                <p className="mt-4 text-lg font-semibold leading-snug sm:text-2xl md:text-3xl">
                   <span style={{ color: "var(--app-accent-strong)" }}>Smart Paper Grading:</span> Get detailed feedback based on your rubric.
                 </p>
               </article>
@@ -405,7 +405,7 @@ export default async function Home() {
               <article>
                 <div className="rounded-3xl border p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
                   <div className="rounded-3xl border p-6" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-bg)", color: "var(--app-fg)" }}>
-                    <p className="text-3xl font-bold">Calculus &amp; Functions</p>
+                    <p className="text-2xl font-bold sm:text-3xl">Calculus &amp; Functions</p>
                     <div className="mt-4 space-y-2 text-sm">
                       <p><span className="mr-2 rounded-md px-2 py-1" style={{ backgroundColor: "var(--app-card)" }}>63</span> <span className="rounded-md px-2 py-1" style={{ backgroundColor: "rgba(239,68,68,0.15)", color: "#fca5a5" }}>Unlearned</span></p>
                       <p><span className="mr-2 rounded-md px-2 py-1" style={{ backgroundColor: "var(--app-card)" }}>2</span> <span className="rounded-md px-2 py-1" style={{ backgroundColor: "rgba(245,158,11,0.15)", color: "#fcd34d" }}>Learning</span></p>
@@ -414,7 +414,7 @@ export default async function Home() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 text-3xl font-semibold leading-snug">
+                <p className="mt-4 text-lg font-semibold leading-snug sm:text-2xl md:text-3xl">
                   <span style={{ color: "var(--app-accent-strong)" }}>Track Your Progress:</span> Monitor your growth and master subjects faster.
                 </p>
               </article>
@@ -423,7 +423,7 @@ export default async function Home() {
             <div className="mt-12 flex justify-center">
               <Link
                 href="/dashboard"
-                className="rounded-2xl px-12 py-4 text-4xl font-bold text-white shadow-[0_8px_24px_rgba(249,115,22,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_26px_rgba(47,124,240,0.5)]"
+                className="rounded-2xl px-7 py-3 text-lg font-bold text-white shadow-[0_8px_24px_rgba(249,115,22,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_26px_rgba(47,124,240,0.5)] sm:px-12 sm:py-4 sm:text-4xl"
                 style={{ background: "linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%)", boxShadow: "0 8px 24px rgba(37,99,235,0.35)" }}
               >
                 Get Started Now
@@ -433,11 +433,11 @@ export default async function Home() {
         </div>
 
         <div
-          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden px-6 py-14"
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden px-3 py-10 sm:px-6 sm:py-14"
           style={{ backgroundColor: "var(--app-bg)" }}
         >
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-center text-4xl font-bold  md:text-5xl">
+            <h2 className="text-center text-3xl font-bold md:text-5xl">
               Trusted by 100k+ students
             </h2>
 
@@ -446,14 +446,14 @@ export default async function Home() {
         </div>
 
         <div
-          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-6 py-14"
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-3 py-10 sm:px-6 sm:py-14"
           style={{ backgroundColor: "var(--app-bg)" }}
         >
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-center text-4xl font-bold md:text-5xl">
+            <h2 className="text-center text-3xl font-bold md:text-5xl">
               Why Students Choose Lerna Over Old Study Habits
             </h2>
-            <p className="mx-auto mt-5 max-w-4xl text-center text-xl" style={{ color: "var(--app-muted)" }}>
+            <p className="mx-auto mt-4 max-w-4xl text-center text-base sm:text-xl" style={{ color: "var(--app-muted)" }}>
               Lerna helps you study with less stress and better results by turning your class material into focused,
               practical learning workflows.
             </p>
@@ -515,7 +515,7 @@ export default async function Home() {
                     <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold" style={{ backgroundColor: "color-mix(in srgb, white 70%, transparent)" }}>
                       {card.icon}
                     </div>
-                    <p className="text-3xl font-bold">{card.title}</p>
+                    <p className="text-2xl font-bold">{card.title}</p>
                   </div>
 
                   <div className="space-y-6 p-6">
@@ -523,7 +523,7 @@ export default async function Home() {
                       <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-muted)" }}>
                         BEFORE
                       </p>
-                      <ul className="mt-3 space-y-3 text-lg">
+                      <ul className="mt-3 space-y-3 text-base sm:text-lg">
                         {card.old.map((item) => (
                           <li key={item} className="flex items-start gap-3">
                             <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold" style={{ backgroundColor: "color-mix(in srgb, #ef4444 20%, transparent)", color: "#ef4444" }}>
@@ -545,7 +545,7 @@ export default async function Home() {
                       <p className="text-sm font-bold tracking-[0.18em]" style={{ color: "var(--app-accent-strong)" }}>
                         WITH LERNA
                       </p>
-                      <ul className="mt-3 space-y-3 text-lg">
+                      <ul className="mt-3 space-y-3 text-base sm:text-lg">
                         {card.newWay.map((item) => (
                           <li key={item} className="flex items-start gap-3">
                             <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold" style={{ backgroundColor: "color-mix(in srgb, #22c55e 20%, transparent)", color: "#16a34a" }}>
@@ -566,11 +566,11 @@ export default async function Home() {
         <PricingSection compact />
 
         <div
-          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-6 py-14"
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-3 py-10 sm:px-6 sm:py-14"
           style={{ backgroundColor: "var(--app-bg)" }}
         >
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-center text-4xl font-bold md:text-5xl">Frequently Asked Questions</h2>
+            <h2 className="text-center text-3xl font-bold md:text-5xl">Frequently Asked Questions</h2>
 
             <div className="mt-10 space-y-4">
               {[
@@ -604,7 +604,7 @@ export default async function Home() {
                   className="group rounded-2xl border p-0"
                   style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
                 >
-                  <summary className="cursor-pointer list-none px-6 py-5 text-2xl font-semibold marker:content-none">
+                  <summary className="cursor-pointer list-none px-4 py-4 text-lg font-semibold marker:content-none sm:px-6 sm:py-5 sm:text-2xl">
                     <div className="flex items-center justify-between gap-4">
                       <span>{item.q}</span>
                       <span
@@ -630,7 +630,7 @@ export default async function Home() {
                       </span>
                     </div>
                   </summary>
-                  <div className="px-6 pb-6 pt-1 text-lg leading-relaxed" style={{ color: "var(--app-muted)" }}>
+                  <div className="px-4 pb-5 pt-1 text-sm leading-relaxed sm:px-6 sm:pb-6 sm:text-lg" style={{ color: "var(--app-muted)" }}>
                     {item.a}
                   </div>
                 </details>
@@ -640,14 +640,14 @@ export default async function Home() {
         </div>
 
         <footer
-          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 border-t px-6 py-14"
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 border-t px-3 py-10 sm:px-6 sm:py-14"
           style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-bg)" }}
         >
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-5">
               <div className="xl:col-span-1">
-                <p className="text-2xl font-extrabold tracking-[0.2em]">LERNA AI</p>
-                <p className="mt-4 text-lg leading-relaxed" style={{ color: "var(--app-muted)" }}>
+                <p className="text-xl font-extrabold tracking-[0.2em] sm:text-2xl">LERNA AI</p>
+                <p className="mt-4 text-base leading-relaxed sm:text-lg" style={{ color: "var(--app-muted)" }}>
                   Study tools built to help students understand faster, remember longer, and perform better in class.
                 </p>
                 <div className="mt-5 flex gap-3 text-sm font-semibold">
@@ -658,8 +658,8 @@ export default async function Home() {
               </div>
 
               <div>
-                <p className="text-xl font-bold">Core Features</p>
-                <div className="mt-4 space-y-2 text-lg" style={{ color: "var(--app-muted)" }}>
+                <p className="text-lg font-bold sm:text-xl">Core Features</p>
+                <div className="mt-4 space-y-2 text-base sm:text-lg" style={{ color: "var(--app-muted)" }}>
                   <p>Study Guides</p>
                   <p>Flashcards</p>
                   <p>Quiz Practice</p>
@@ -669,8 +669,8 @@ export default async function Home() {
               </div>
 
               <div>
-                <p className="text-xl font-bold">Study Tools</p>
-                <div className="mt-4 space-y-2 text-lg" style={{ color: "var(--app-muted)" }}>
+                <p className="text-lg font-bold sm:text-xl">Study Tools</p>
+                <div className="mt-4 space-y-2 text-base sm:text-lg" style={{ color: "var(--app-muted)" }}>
                   <p>PDF to Notes</p>
                   <p>Lecture Audio to Summary</p>
                   <p>YouTube to Flashcards</p>
@@ -680,8 +680,8 @@ export default async function Home() {
               </div>
 
               <div>
-                <p className="text-xl font-bold">Company</p>
-                <div className="mt-4 space-y-2 text-lg">
+                <p className="text-lg font-bold sm:text-xl">Company</p>
+                <div className="mt-4 space-y-2 text-base sm:text-lg">
                   <Link href="/pricing" style={{ color: "var(--app-muted)" }}>Pricing</Link>
                   <p><Link href="/support" style={{ color: "var(--app-muted)" }}>Support</Link></p>
                   <p><Link href="/auth?mode=signup" style={{ color: "var(--app-muted)" }}>Create Account</Link></p>
@@ -691,8 +691,8 @@ export default async function Home() {
               </div>
 
               <div>
-                <p className="text-xl font-bold">Legal</p>
-                <div className="mt-4 space-y-2 text-lg" style={{ color: "var(--app-muted)" }}>
+                <p className="text-lg font-bold sm:text-xl">Legal</p>
+                <div className="mt-4 space-y-2 text-base sm:text-lg" style={{ color: "var(--app-muted)" }}>
                   <p>Privacy Policy</p>
                   <p>Terms of Use</p>
                   <p>Billing Policy</p>

@@ -60,17 +60,19 @@ export default function RootLayout({
             boxShadow: "none",
           }}
         >
-          <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-6">
+          <nav className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-2 px-2.5 sm:px-4 md:h-16 md:gap-4 md:px-6">
             <Link href="/" className="flex items-center gap-2 overflow-visible text-sm font-semibold tracking-wide">
               <img
                 src="/lerna-brand.svg"
                 alt="lerna"
-                className="w-auto object-contain"
-                style={{ height: "3.4rem", transform: "scale(1.7)", transformOrigin: "left center" }}
+                className="h-7 w-auto object-contain sm:h-9 md:h-10"
                 loading="eager"
               />
             </Link>
-            <div className="flex items-center gap-2 text-sm" style={{ color: "var(--app-muted)" }}>
+            <div
+              className="flex min-w-0 max-w-[68vw] items-center gap-1.5 overflow-x-auto whitespace-nowrap pr-0.5 text-xs [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-2 sm:text-sm md:max-w-none"
+              style={{ color: "var(--app-muted)" }}
+            >
               <PrimaryNav />
               <AuthNav />
               <ThemeToggle />

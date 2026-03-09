@@ -85,7 +85,7 @@ export default function AuthNav() {
       <>
         <Link
           href="/pricing"
-          className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
+          className="hidden rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.25)] sm:inline-flex"
           style={{
             color: pathname === "/pricing" ? "var(--app-fg)" : "var(--app-fg)",
             borderColor: "color-mix(in srgb, var(--app-border) 65%, transparent)",
@@ -95,7 +95,7 @@ export default function AuthNav() {
         </Link>
         <Link
           href="/support"
-          className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
+          className="hidden rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.25)] sm:inline-flex"
           style={{
             color: "var(--app-fg)",
             borderColor: "color-mix(in srgb, var(--app-border) 65%, transparent)",
@@ -106,7 +106,7 @@ export default function AuthNav() {
         <button
           type="button"
           onClick={cycleLanguage}
-          className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
+          className="rounded-full border border-transparent px-2.5 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)] sm:px-3"
           style={{
             color: "var(--app-fg)",
             borderColor: "color-mix(in srgb, var(--app-border) 65%, transparent)",
@@ -152,7 +152,7 @@ export default function AuthNav() {
       <button
         type="button"
         onClick={cycleLanguage}
-        className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]"
+        className="rounded-full border border-transparent px-2.5 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)] sm:px-3"
         style={{
           color: "var(--app-muted)",
           backgroundColor: "color-mix(in srgb, var(--app-card) 80%, transparent)",
@@ -160,14 +160,14 @@ export default function AuthNav() {
       >
         {lang} v
       </button>
-      <Link href="/pricing" className="rounded-full border border-transparent px-3 py-1.5 text-sm transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]" style={activePillStyle(pathname === "/pricing")}>
+      <Link href="/pricing" className="hidden rounded-full border border-transparent px-3 py-1.5 text-sm transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)] sm:inline-flex" style={activePillStyle(pathname === "/pricing")}>
         Pricing
       </Link>
-      <Link href="/support" className="rounded-full border border-transparent px-3 py-1.5 text-sm transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)]" style={activePillStyle(pathname === "/support")}>
+      <Link href="/support" className="hidden rounded-full border border-transparent px-3 py-1.5 text-sm transition-all duration-200 hover:-translate-y-px hover:border-white/25 hover:shadow-[0_0_20px_rgba(123,163,255,0.25)] sm:inline-flex" style={activePillStyle(pathname === "/support")}>
         Support
       </Link>
       <span
-        className="rounded-full border px-3 py-1 text-xs"
+        className="hidden rounded-full border px-3 py-1 text-xs lg:inline-flex"
         style={{
           borderColor: "var(--app-accent-strong)",
           color: "var(--app-accent-strong)",

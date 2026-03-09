@@ -55,6 +55,7 @@ body {
   color: var(--app-fg);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   transition: background 220ms ease, color 220ms ease;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -337,6 +338,28 @@ body {
   border: 1px solid color-mix(in srgb, var(--app-border) 70%, white 30%);
   object-fit: cover;
   background: #0b1327;
+}
+
+@media (max-width: 768px) {
+  .trust-item {
+    width: 160px;
+    height: 56px;
+  }
+
+  .trust-logo {
+    max-height: 38px;
+    max-width: 150px;
+  }
+
+  .review-card {
+    width: min(560px, 90vw);
+    padding: 1.1rem;
+  }
+
+  .review-quote {
+    min-height: 84px;
+    font-size: 0.95rem;
+  }
 }
 
 [data-theme="light"] .review-card {
