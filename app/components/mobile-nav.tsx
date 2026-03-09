@@ -65,14 +65,14 @@ export default function MobileNav() {
   }
 
   const linkStyle = (active: boolean) => ({
-    borderColor: active ? "var(--app-accent-strong)" : "var(--app-border)",
     backgroundColor: active
       ? "color-mix(in srgb, var(--app-bg) 84%, var(--app-card) 16%)"
       : "transparent",
     color: active ? "var(--app-fg)" : "var(--app-muted)",
   });
 
-  const menuLinkClass = "block rounded-xl border px-3 py-2.5 text-sm font-medium tracking-[0.01em]";
+  const menuLinkClass =
+    "block rounded-lg px-2 py-2.5 text-sm font-medium tracking-[0.01em] transition-colors duration-150 hover:bg-[color:color-mix(in_srgb,var(--app-bg)_80%,var(--app-card)_20%)]";
 
   return (
     <div className="relative">
@@ -112,7 +112,8 @@ export default function MobileNav() {
         }`}
         style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
       >
-          <div className="space-y-2">
+          <div className="divide-y" style={{ borderColor: "color-mix(in srgb, var(--app-border) 75%, transparent)" }}>
+            <div className="space-y-1 pb-2">
             <Link
               href="/studyroom"
               onClick={() => setOpen(false)}
@@ -128,46 +129,47 @@ export default function MobileNav() {
             <Link href="/support" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/support")}>
               Support
             </Link>
+            </div>
 
             {user ? (
-              <>
+              <div className="space-y-1 py-2">
                 <Link href="/profile" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/profile")}>
                   Profile
                 </Link>
                 <Link href="/settings" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/settings")}>
                   Settings
                 </Link>
-              </>
+              </div>
             ) : (
-              <>
+              <div className="space-y-1 py-2">
                 <Link href="/auth?mode=login" onClick={() => setOpen(false)} className={menuLinkClass} style={linkStyle(pathname === "/auth")}>
                   Sign In
                 </Link>
                 <Link
                   href="/auth?mode=signup"
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl border px-3 py-2.5 text-center text-sm font-medium tracking-[0.01em]"
+                  className="block rounded-lg px-2 py-2.5 text-center text-sm font-semibold tracking-[0.01em] transition-colors duration-150"
                   style={{
-                    borderColor: "color-mix(in srgb, var(--app-fg) 85%, black 15%)",
+                    border: "1px solid color-mix(in srgb, var(--app-fg) 85%, black 15%)",
                     backgroundColor: "white",
                     color: "black",
                   }}
                 >
                   Get Started
                 </Link>
-              </>
+              </div>
             )}
 
-            <div className="grid grid-cols-2 gap-2 pt-1">
+            <div className="grid grid-cols-2 gap-2 py-2">
               <button
                 type="button"
                 onClick={cycleLanguage}
-                className="rounded-xl border px-3 py-2.5 text-sm font-medium tracking-[0.01em]"
-                style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}
+                className="rounded-lg px-2 py-2.5 text-sm font-medium tracking-[0.01em] transition-colors duration-150 hover:bg-[color:color-mix(in_srgb,var(--app-bg)_80%,var(--app-card)_20%)]"
+                style={{ color: "var(--app-muted)" }}
               >
                 {lang} v
               </button>
-              <div className="flex items-center justify-center rounded-xl border px-2" style={{ borderColor: "var(--app-border)" }}>
+              <div className="flex items-center justify-center rounded-lg px-2">
                 <ThemeToggle />
               </div>
             </div>
@@ -176,8 +178,8 @@ export default function MobileNav() {
               <button
                 type="button"
                 onClick={logout}
-                className="mt-1 block w-full rounded-xl border px-3 py-2.5 text-sm font-medium tracking-[0.01em]"
-                style={{ borderColor: "var(--app-border)", color: "var(--app-muted)" }}
+                className="mt-2 block w-full rounded-lg px-2 py-2.5 text-left text-sm font-medium tracking-[0.01em] transition-colors duration-150 hover:bg-[color:color-mix(in_srgb,var(--app-bg)_80%,var(--app-card)_20%)]"
+                style={{ color: "var(--app-muted)" }}
               >
                 Logout
               </button>

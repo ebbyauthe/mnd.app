@@ -62,11 +62,11 @@ export default function RootLayout({
           }}
         >
           <nav className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-2 px-2.5 sm:px-4 md:h-16 md:gap-4 md:px-6">
-            <Link href="/" className="flex items-center gap-2 overflow-visible text-sm font-semibold tracking-wide">
+            <Link href="/" className="flex shrink-0 items-center gap-2 overflow-visible text-sm font-semibold tracking-wide">
               <img
                 src="/lerna-brand.svg"
                 alt="lerna"
-                className="h-9 w-auto object-contain sm:h-10 md:h-10"
+                className="h-12 w-auto object-contain md:h-10"
                 loading="eager"
               />
             </Link>
