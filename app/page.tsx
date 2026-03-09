@@ -114,7 +114,69 @@ export default async function Home() {
           <div className="mx-auto grid max-w-7xl items-center gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
             <div className="order-2 relative min-h-[240px] sm:min-h-[380px] lg:order-1">
               <div
-                className="absolute inset-0 rounded-3xl border"
+                className="rounded-3xl border p-4 md:hidden"
+                style={{
+                  borderColor: "var(--app-border)",
+                  background:
+                    "linear-gradient(135deg, color-mix(in srgb, var(--app-card) 90%, var(--app-bg) 10%), color-mix(in srgb, var(--app-bg) 78%, var(--app-card) 22%))",
+                  boxShadow: "0 0 70px color-mix(in srgb, var(--app-accent) 20%, transparent)",
+                }}
+              >
+                <div className="rounded-2xl border p-3" style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}>
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs font-semibold" style={{ color: "var(--app-muted)" }}>Studyroom preview</p>
+                    <span
+                      className="rounded-full border px-2.5 py-1 text-[10px] font-semibold"
+                      style={{
+                        borderColor: "var(--app-border)",
+                        color: "var(--app-accent-strong)",
+                        backgroundColor: "color-mix(in srgb, var(--app-accent) 10%, transparent)",
+                      }}
+                    >
+                      Session active
+                    </span>
+                  </div>
+
+                  <div className="mt-3 space-y-2">
+                    {[
+                      { step: "STEP 1", title: "Upload notes", text: "PDF, text, audio, or YouTube links" },
+                      { step: "STEP 2", title: "Generate study guide", text: "Clear explanations and examples" },
+                      { step: "STEP 3", title: "Practice + retain", text: "Flashcards, quizzes, and progress tracking" },
+                    ].map((item) => (
+                      <div
+                        key={item.step}
+                        className="rounded-xl border p-3"
+                        style={{ borderColor: "var(--app-border)", backgroundColor: "color-mix(in srgb, var(--app-card) 92%, var(--app-bg) 8%)" }}
+                      >
+                        <p className="text-[11px] font-semibold" style={{ color: "var(--app-accent-strong)" }}>{item.step}</p>
+                        <p className="mt-1 text-lg font-bold">{item.title}</p>
+                        <p className="mt-1 text-xs" style={{ color: "var(--app-muted)" }}>{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    <div className="rounded-lg border p-2.5" style={{ borderColor: "var(--app-border)", backgroundColor: "color-mix(in srgb, var(--app-card) 94%, var(--app-bg) 6%)" }}>
+                      <p className="text-[11px]" style={{ color: "var(--app-muted)" }}>Current Topic</p>
+                      <p className="mt-0.5 text-base font-bold">Cell Biology</p>
+                    </div>
+                    <div className="rounded-lg border p-2.5" style={{ borderColor: "var(--app-border)", backgroundColor: "color-mix(in srgb, var(--app-card) 94%, var(--app-bg) 6%)" }}>
+                      <p className="text-[11px]" style={{ color: "var(--app-muted)" }}>Mastery</p>
+                      <p className="mt-0.5 text-base font-bold">74%</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-3">
+                    <p className="text-xs font-medium" style={{ color: "var(--app-muted)" }}>Progress this week</p>
+                    <div className="mt-2 h-2 overflow-hidden rounded-full" style={{ backgroundColor: "color-mix(in srgb, var(--app-border) 55%, transparent)" }}>
+                      <div className="h-full w-[62%] rounded-full" style={{ background: "linear-gradient(90deg, var(--app-accent-strong), var(--app-accent))" }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="absolute inset-0 hidden rounded-3xl border md:block"
                 style={{
                   borderColor: "var(--app-border)",
                   background:
@@ -124,7 +186,7 @@ export default async function Home() {
               />
 
               <div
-                className="absolute left-[8%] top-[16%] w-[84%] rounded-2xl border p-3 shadow-2xl sm:p-5"
+                className="absolute left-[8%] top-[16%] hidden w-[84%] rounded-2xl border p-3 shadow-2xl sm:p-5 md:block"
                 style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
               >
                 <div className="flex items-center justify-between">

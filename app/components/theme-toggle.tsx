@@ -1,11 +1,17 @@
 "use client";
 
+import { useState } from "react";
+
 type Theme = "light" | "dark";
 
 const STORAGE_KEY = "lerna-theme";
 
 export default function ThemeToggle() {
   function getCurrentTheme(): Theme {
+    if (typeof document === "undefined" || typeof window === "undefined") {
+      return "light";
+    }
+
     const attrTheme = document.documentElement.getAttribute("data-theme");
     if (attrTheme === "dark" || attrTheme === "light") return attrTheme;
 
@@ -15,12 +21,17 @@ export default function ThemeToggle() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
+  const [theme, setTheme] = useState<Theme>(getCurrentTheme);
+
   function toggleTheme() {
     const currentTheme = getCurrentTheme();
     const nextTheme: Theme = currentTheme === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", nextTheme);
     localStorage.setItem(STORAGE_KEY, nextTheme);
+    setTheme(nextTheme);
   }
+
+  const nextLabel = theme === "light" ? "🌙 Dark" : "☀️ Light";
 
   return (
     <button
@@ -34,7 +45,7 @@ export default function ThemeToggle() {
       }}
       aria-label="Toggle theme"
     >
-      Theme
+      {nextLabel}
     </button>
   );
 }
