@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -9,7 +10,7 @@ type VerifyResponse = {
   message?: string;
 };
 
-export default function VerifyEmailPage() {
+function VerifyEmailPageContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
   const [isLoading, setIsLoading] = useState(false);
@@ -85,5 +86,13 @@ export default function VerifyEmailPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={<main className="min-h-[calc(100vh-56px)] px-6 py-12" />}>
+      <VerifyEmailPageContent />
+    </Suspense>
   );
 }
