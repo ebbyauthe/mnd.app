@@ -117,8 +117,8 @@ function StandardMobileNav({ pathname }: { pathname: string }) {
         }`}
         style={{
           borderColor: "var(--app-border)",
-          backgroundColor: "color-mix(in srgb, var(--app-card) 96%, var(--app-bg) 4%)",
-          boxShadow: "0 18px 40px color-mix(in srgb, black 18%, transparent)",
+          backgroundColor: "var(--app-bg)",
+          boxShadow: "0 18px 40px color-mix(in srgb, black 22%, transparent)",
         }}
       >
           <div className="divide-y" style={{ borderColor: "color-mix(in srgb, var(--app-border) 75%, transparent)" }}>
@@ -148,11 +148,14 @@ function StandardMobileNav({ pathname }: { pathname: string }) {
                 <Link
                   href="/auth?mode=signup"
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-2 py-2.5 text-center text-sm font-semibold tracking-[0.01em] transition-colors duration-150"
+                  className="block rounded-full px-5 py-2 text-center text-sm font-semibold transition-all duration-200 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(123,163,255,0.35)]"
                   style={{
-                    border: "1px solid color-mix(in srgb, var(--app-fg) 85%, black 15%)",
-                    backgroundColor: "white",
-                    color: "black",
+                    border: "1px solid transparent",
+                    background:
+                      "linear-gradient(135deg, color-mix(in srgb, var(--app-accent-strong) 90%, white 10%), var(--app-accent))",
+                    color: "white",
+                    boxShadow: "0 8px 24px color-mix(in srgb, var(--app-accent) 34%, transparent)",
+                    minWidth: "160px",
                   }}
                 >
                   Get Started
