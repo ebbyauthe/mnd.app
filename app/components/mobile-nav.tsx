@@ -87,7 +87,7 @@ function StandardMobileNav({ pathname }: { pathname: string }) {
         aria-expanded={open}
         onClick={() => setOpen((prev) => !prev)}
         className="inline-flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 hover:bg-[color:color-mix(in_srgb,var(--app-card)_72%,transparent)] hover:shadow-[0_0_16px_color-mix(in_srgb,var(--app-accent)_20%,transparent)]"
-        style={{ color: "var(--app-fg)", backgroundColor: "color-mix(in srgb, var(--app-card) 94%, var(--app-bg) 6%)", border: "1px solid var(--app-border)", boxShadow: "0 10px 24px color-mix(in srgb, var(--app-accent) 16%, transparent)" }}
+        style={{ color: "var(--app-fg)", backgroundColor: "transparent", border: "none", boxShadow: "none" }}
       >
         <span className="sr-only">Menu</span>
         <span className="relative inline-flex h-4 w-5">
@@ -115,7 +115,11 @@ function StandardMobileNav({ pathname }: { pathname: string }) {
             ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
             : "pointer-events-none -translate-y-2 scale-[0.98] opacity-0"
         }`}
-        style={{ borderColor: "var(--app-border)", backgroundColor: "var(--app-card)" }}
+        style={{
+          borderColor: "var(--app-border)",
+          backgroundColor: "color-mix(in srgb, var(--app-card) 96%, var(--app-bg) 4%)",
+          boxShadow: "0 18px 40px color-mix(in srgb, black 18%, transparent)",
+        }}
       >
           <div className="divide-y" style={{ borderColor: "color-mix(in srgb, var(--app-border) 75%, transparent)" }}>
             <div className="space-y-1 pb-2">
